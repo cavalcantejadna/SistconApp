@@ -1,0 +1,73 @@
+
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Entrar</title>
+
+</head>
+<body>
+	<th:block th:fragment="conteudo">
+		<main role="main" class="container">
+		<div class="m-auto" style="max-width: 350px;">
+			<h3 class="font-weight-light mb-3">Entrar</h3>
+                        <!--<img th:src="@{/misc/sistcon1d.png}" width="100" height="50"/>-->
+			<div th:if="${param.erro}">
+				<div class="alert alert-danger">Usuário ou senha inválidos!</div>
+			</div>
+			<div th:if="${param.sair}">
+				<div class="alert alert-info">Desconectado com sucesso!</div>
+			</div>
+			<div th:if="${param.redefinido}">
+				<div class="alert alert-success">Senha redefinida, tente entrar novamente!</div>
+			</div>
+			<div th:if="${param.alterado}">
+				<div class="alert alert-success">Seu cadastro foi alterado, você precisa entrar novamente!</div>
+			</div>
+			<div th:if="${param.novo}">
+				<div class="alert alert-success">Sua conta foi criada, obrigado!</div>
+			</div>
+			<form th:action="@{/entrar}" th:method="post" class="needs-validation" autocomplete="off" novalidate>
+				<div class="card">
+					<ul class="list-group list-group-flush" >
+						<li class="list-group-item bg-secondary"> <!--muda a cor background -->
+							<div class="form-group text-white"> <!--muda a cor do texto --->
+								<label>Usuário</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text"><i class="fas fa-user"></i></span>
+									</div>
+									<input class="form-control last" type="text" name="username" placeholder="Seu usuário" autofocus="autofocus" required />
+									<div class="invalid-feedback" >Campo obrigatório</div>
+								</div>
+							</div>
+							<div class="form-group text-white">
+								<label>Senha</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text"><i class="fas fa-lock"></i></span>
+									</div>
+									<input class="form-control last" type="password" name="password" placeholder="Sua senha" required />
+									<div class="invalid-feedback">Campo obrigatório</div>
+								</div>
+								<small><a class="text-warning" th:href="@{/conta/redefinir}" tabindex="-1">Esqueci minha senha</a></small>
+							</div>
+							<div class="custom-control custom-checkbox mb-3">
+								<input class="custom-control-input" type="checkbox" id="remember-me" name="remember-me" /> <label class="custom-control-label text-white" for="remember-me">Mantenha-me conectado</label>
+							</div>
+							<button type="submit" class="btn btn-success btn-block">
+								Entrar<i class="fas fa-sign-in-alt ml-3"></i>
+							</button>
+						</li>
+					</ul>
+				</div>
+			</form>
+			<p class="text-center mt-3">
+				Condomínio não cadastrado? <a class="text-warning" th:href="@{/conta/cadastrar}"> Cadastre já!</a>
+			</p>
+		</div>
+		</main>
+	</th:block>
+<th:block th:fragment="jsAdicional"></th:block>
+</body>
+</html>

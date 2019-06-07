@@ -1,0 +1,25 @@
+
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Condomínio App</title>
+<div class="form-top-left image">
+       <img th:src="@{/dist/img/sistcon3d.png}" width="160" height="160" class="logo img-responsive" alt="User Image" />
+</div>
+</head>
+<body>
+	<th:block th:fragment="conteudo">
+		<main role="main" class="container">
+		<div class="jumbotron mb-0 m-auto bg-secondary">
+			<h1 class="display-4 text-white">Bem vindo ao Sistcon!</h1>
+			<p class="lead text-white">Sistema de Gerenciamento de Condomínio</p>
+			<hr class="my-4 text-white">
+                        <p class="text-white">Síndico, realize seu cadastro abaixo.</p>
+			<a class="btn btn-success btn-lg" th:href="@{/conta/cadastrar}" role="button">Registrar</a><a class="ml-3 text-warning" th:href="@{/entrar}">Já tenho uma conta.</a>
+		</div>
+		</main>
+	</th:block>
+	<th:block th:fragment="jsAdicional"></th:block>
+</body>
+</html>
